@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0c1f3d">
+
+    <title>POP RTP - RTP Online - RTP Jogos em Tempo Real - RTP Jogos - RTP Online</title>
+    <meta name="description" content="Jogo RTP, RTP online e RTP jogos em tempo real. O melhor sistema de jogo RTP para cassino online. Análise de slots, percentual RTP atualizado a cada 3 min. Best RTP Fortune Tiger, Gates of Olympus e mais.">
+    <meta name="keywords" content="jogo rtp, rtp online, rtp jogos, pop rtp, best rtp, sistema rtp, RTP em tempo real, jogo rtp tempo real, rtp slots, cassino online, slots, jogos de cassino, retorno ao jogador, análise RTP, horário pagante, fortune tiger, gates of olympus, pragmatic play, pg soft, melhor rtp, rtp jogos online">
+    <meta name="author" content="POP REDE">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://poprtp.com/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://poprtp.com/">
+    <meta property="og:title" content="Jogo RTP | RTP Online | RTP Jogos - Pop RTP">
+    <meta property="og:description" content="Pop RTP - O melhor sistema de análise RTP para cassino online. Encontre os melhores jogos RTP com percentuais atualizados a cada 3 minutos.">
+    <meta property="og:image" content="https://poprtp.com/asset/banner/1%20(1).jpg">
+    <meta property="og:site_name" content="POP RTP">
+    <meta property="og:locale" content="pt_BR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://poprtp.com/">
+    <meta name="twitter:title" content="Jogo RTP | RTP Online | RTP Jogos - Pop RTP">
+    <meta name="twitter:description" content="Pop RTP - O melhor sistema de análise RTP para cassino online. Encontre os melhores jogos RTP com percentuais atualizados a cada 3 minutos.">
+    <meta name="twitter:image" content="https://poprtp.com/asset/banner/1%20(1).jpg">
+
+    <link rel="icon" href="asset/favicon/favicon.jpg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="asset/favicon/favicon.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PV01P9NMZL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-PV01P9NMZL');
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="./">
+                <img class="brand-logo" src="asset/favicon/favicon.jpg" alt="" width="40" height="40">
+                <span class="brand-text">
+                    <span class="brand-name">POP RTP</span>
+                    <span class="brand-tag">OFICIAL</span>
+                </span>
+            </a>
+            <div class="header-title">
+                <h1>Sistema de Análise RTP</h1>
+                <p>RTP ao vivo · atualizado a cada 3 minutos</p>
+            </div>
+            <div class="header-meta">
+                <span class="chip"><span class="dot dot--live"></span><strong id="onlineViewerCount">0</strong> online</span>
+                <span class="chip chip--clock">HORA <strong id="systemTime">--:--:--</strong></span>
+            </div>
+        </div>
+        <div class="ticker" id="liveActivityBar">
+            <div class="container ticker-inner">
+                <span class="ticker-label">AO VIVO</span>
+                <span class="ticker-text is-visible" id="liveActivityTicker">Sistema online — carregando dados...</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container main">
+        <!-- Mobile only: 5-slot platform strip (images/links from data/ui-config.json) -->
+        <div class="mobile-strip" id="mobileBannerRow">
+            <a class="mb-item mb-square" target="_blank" rel="noopener"><img class="mb-img mb-img-cur" src="sidebanner/SQUARE (11).png" alt="PopSen"><img class="mb-img mb-img-nxt" alt="" aria-hidden="true"></a>
+            <a class="mb-item mb-square" target="_blank" rel="noopener"><img class="mb-img mb-img-cur" src="sidebanner/SQUARE (8).png" alt="POPNov"><img class="mb-img mb-img-nxt" alt="" aria-hidden="true"></a>
+            <a class="mb-item mb-long" target="_blank" rel="noopener"><img class="mb-img mb-img-cur" src="sidebanner/LONG (15).png" alt="POPJUN"><img class="mb-img mb-img-nxt" alt="" aria-hidden="true"></a>
+            <a class="mb-item mb-square" target="_blank" rel="noopener"><img class="mb-img mb-img-cur" src="sidebanner/SQUARE (7).png" alt="POPTIG"><img class="mb-img mb-img-nxt" alt="" aria-hidden="true"></a>
+            <a class="mb-item mb-square" target="_blank" rel="noopener"><img class="mb-img mb-img-cur" src="sidebanner/SQUARE (14).png" alt="POPMIU"><img class="mb-img mb-img-nxt" alt="" aria-hidden="true"></a>
+        </div>
+
+        <!-- Hero: timer | carousel | platform promo (desktop); carousel then timer (mobile) -->
+        <section class="hero">
+            <aside class="card timer-card" aria-label="Próxima atualização do RTP">
+                <p class="eyebrow">Próxima atualização</p>
+                <div class="timer-display">
+                    <span id="timerMinutes">--</span><span class="timer-sep">:</span><span id="timerSeconds">--</span>
+                </div>
+                <div class="timer-meter">
+                    <div class="progress"><div class="progress-fill" id="timerProgressBar"></div></div>
+                    <div class="timer-progress-text">
+                        <span>INÍCIO</span>
+                        <span id="progressPercent">0%</span>
+                        <span>PRÓXIMO</span>
+                    </div>
+                </div>
+                <button class="btn btn--primary btn--block" type="button" data-open-platforms>VER PLATAFORMAS</button>
+            </aside>
+
+            <div class="carousel">
+                <div class="carousel-track" id="carouselTrack">
+                    <a class="carousel-slide carousel-slide--platform" href="#"><img src="banner/JUN (1).jpg" alt="POPJUN" loading="eager"></a>
+                    <a class="carousel-slide" data-link="sorte" href="#" target="_blank" rel="noopener">
+                        <img src="banner/sortertp.gif" alt="POP SORTE - Loterias" loading="lazy">
+                        <span class="carousel-badge">LOTERIA</span>
+                    </a>
+                    <a class="carousel-slide carousel-slide--platform" href="#"><img src="banner/JUN (2).jpg" alt="POPJUN" loading="lazy"></a>
+                    <a class="carousel-slide carousel-slide--platform" href="#"><img src="banner/BRA1.jpg" alt="Selecionar plataforma" loading="lazy"></a>
+                    <a class="carousel-slide carousel-slide--platform" href="#"><img src="banner/JUN (3).jpg" alt="POPJUN" loading="lazy"></a>
+                    <a class="carousel-slide carousel-slide--platform" href="#"><img src="banner/BRA2.jpg" alt="Selecionar plataforma" loading="lazy"></a>
+                    <a class="carousel-slide carousel-slide--platform" href="#"><img src="banner/JUN (4).jpg" alt="POPJUN" loading="lazy"></a>
+                    <a class="carousel-slide carousel-slide--platform" href="#"><img src="banner/BRA3.jpg" alt="Selecionar plataforma" loading="lazy"></a>
+                    <a class="carousel-slide carousel-slide--platform" href="#"><img src="banner/JUN (5).jpg" alt="POPJUN" loading="lazy"></a>
+                    <a class="carousel-slide carousel-slide--platform" href="#"><img src="banner/BRA4.jpg" alt="Selecionar plataforma" loading="lazy"></a>
+                    <a class="carousel-slide carousel-slide--platform" href="#"><img src="banner/JUN (6).jpg" alt="POPJUN" loading="lazy"></a>
+                </div>
+                <button class="carousel-btn carousel-btn--prev" id="prevBtn" type="button" aria-label="Anterior">‹</button>
+                <button class="carousel-btn carousel-btn--next" id="nextBtn" type="button" aria-label="Próximo">›</button>
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+
+            <!-- Desktop only -->
+            <aside class="side-banner" aria-label="Plataformas em destaque">
+                <div class="side-banner-track" id="sideBannerTrack">
+                    <a class="side-banner-slide" data-platform-id="31" href="#" target="_blank" rel="noopener">
+                        <img src="sidebanner/SQUARE (15).jpg" alt="POPJUN">
+                        <span class="side-banner-cta">JOGAR NA POPJUN ›</span>
+                    </a>
+                    <a class="side-banner-slide" data-platform-id="30" href="#" target="_blank" rel="noopener">
+                        <img src="sidebanner/SQUARE (14).png" alt="POPMIU">
+                        <span class="side-banner-cta">JOGAR NA POPMIU ›</span>
+                    </a>
+                </div>
+                <span class="side-banner-badge"><span class="dot dot--live"></span>ONLINE</span>
+                <div class="side-banner-dots" aria-hidden="true">
+                    <span class="side-dot is-active"></span>
+                    <span class="side-dot"></span>
+                </div>
+            </aside>
+        </section>
+
+        <!-- Info cards -->
+        <section class="stats" aria-label="Resumo do dia">
+            <div class="card stat stat--hot" id="horaQuenteStrip">
+                <p class="stat-head"><span class="stat-dot" aria-hidden="true"></span><span class="stat-label" id="horaQuenteLabel">Próximo horário quente</span></p>
+                <strong class="stat-value" id="horaQuenteTime">--:--</strong>
+                <span class="stat-sub" id="horaQuenteCountdown"></span>
+                <span class="stat-sub stat-cta">Aproveita — tá pagando demais!</span>
+            </div>
+            <div class="card stat stat--signal" id="sinalDoDiaPanel">
+                <p class="stat-head"><span class="stat-dot" aria-hidden="true"></span><span class="stat-label">Sinal do dia</span></p>
+                <strong class="stat-value stat-value--text" id="sinalGameName">—</strong>
+                <span class="stat-sub">RTP <strong class="sinal-rtp" id="sinalRTP">—</strong> · <strong class="sinal-mult" id="sinalMult">—</strong></span>
+            </div>
+            <div class="card stat stat--money">
+                <p class="stat-head"><span class="stat-dot" aria-hidden="true"></span><span class="stat-label">Ganhos hoje</span></p>
+                <strong class="stat-value ganhos-value" id="ganhosDoDiaValue">R$ —</strong>
+                <span class="stat-sub">pelos usuários</span>
+            </div>
+        </section>
+
+        <!-- Winners gallery -->
+        <section class="section" id="ganhadores-gallery" aria-labelledby="winnersTitle">
+            <div class="section-head">
+                <h2 class="section-title" id="winnersTitle">Ganhadores recentes</h2>
+                <div class="section-actions">
+                    <button class="icon-btn" id="tm-prev" type="button" aria-label="Anterior">‹</button>
+                    <button class="icon-btn" id="tm-next" type="button" aria-label="Próximo">›</button>
+                </div>
+            </div>
+            <div class="winners-track" id="tm-track"></div>
+        </section>
+
+        <!-- Provider filter + games -->
+        <section class="section games" aria-labelledby="gamesTitle">
+            <div class="section-head">
+                <h2 class="section-title" id="gamesTitle">Jogos <span class="live-badge"><span class="dot dot--live"></span>RTP ao vivo</span></h2>
+                <div class="provider-filter">
+                    <button class="provider-toggle" id="providerToggle" type="button" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="provider-toggle-caption">Provedor</span>
+                        <span class="provider-toggle-name" id="currentProviderName">TODOS</span>
+                        <span class="provider-toggle-count" id="currentProviderCount">—</span>
+                        <span class="provider-toggle-icon" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="provider-menu" id="providerMenu" role="listbox"></div>
+                </div>
+            </div>
+
+            <div class="games-grid" id="gamesGrid">
+                <p class="games-message">Carregando jogos...</p>
+            </div>
+
+            <div class="load-more" id="loadMoreContainer" hidden>
+                <button class="btn btn--outline" id="loadMoreBtn" type="button">
+                    CARREGAR MAIS JOGOS <span class="load-more-count" id="remainingGamesCount"></span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p class="footer-warning"><span class="age-badge">18+</span>O jogo pode causar dependência. Jogue com responsabilidade.</p>
+            <nav class="footer-links">
+                <a href="article/">Artigos</a>
+                <a href="https://redepop.vip/jogos/" data-link="jogos" target="_blank" rel="noopener">RedePop Jogos</a>
+                <a href="jogo-responsavel.html">Jogo Responsável</a>
+                <a href="https://www.begambleaware.org/" target="_blank" rel="noopener">BeGambleAware</a>
+            </nav>
+            <p class="footer-copy">© POP RTP</p>
+        </div>
+    </footer>
+
+    <!-- Action dock: centred pill on desktop, bottom bar on mobile -->
+    <nav class="dock" aria-label="Ações rápidas">
+        <a class="dock-btn dock-btn--telegram" data-link="telegram" href="#" target="_blank" rel="noopener" aria-label="Telegram">
+            <img src="tg/tg.webp" alt="Telegram Pop RTP - Sinais e Dicas">
+        </a>
+        <a class="dock-btn dock-btn--whatsapp" data-link="whatsapp" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <button class="floating-timer" id="floatingTimerBtn" type="button" aria-label="Escolher plataforma">
+            <span class="floating-timer-time">
+                <span id="floatingTimerMinutes">--</span>:<span id="floatingTimerSeconds">--</span>
+            </span>
+            <span class="progress progress--thin"><span class="progress-fill" id="floatingTimerProgressBar"></span></span>
+        </button>
+        <a class="dock-btn dock-btn--image" data-link="sorte" href="#" target="_blank" rel="noopener" aria-label="POP SORTE - Loterias">
+            <img src="banner/sorte-icon.gif" alt="POP SORTE">
+        </a>
+        <a class="dock-btn dock-btn--image" data-link="jogos" href="#" target="_blank" rel="noopener" aria-label="RedePop Jogos">
+            <img src="banner/jogos-icon.webp" alt="RedePop Jogos">
+        </a>
+    </nav>
+
+    <!-- GSS logo ball: starts as a playful center-screen intro, then docks in the right gutter -->
+    <div class="gss-orb is-intro" data-scene="orb" aria-hidden="true"><canvas></canvas></div>
+    <svg class="gss-key" width="0" height="0" aria-hidden="true" focusable="false">
+        <filter id="gssKey" color-interpolation-filters="sRGB">
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  3.5 3.5 3.5 0 -0.5"/>
+        </filter>
+    </svg>
+
+    <!-- PopSorte popup -->
+    <div class="overlay" id="sorteOverlay" aria-hidden="true">
+        <div class="popup" role="dialog" aria-modal="true" aria-label="POP SORTE - Loterias">
+            <button class="popup-close" type="button" data-close aria-label="Fechar">×</button>
+            <a class="popup-image" data-link="sorte" data-close href="#" target="_blank" rel="noopener">
+                <img src="banner/sortertp.gif" alt="POP SORTE - Ganhe o Prêmio Jackpot R$ 150.000++">
+            </a>
+        </div>
+    </div>
+
+    <!-- POPJUN launch popup -->
+    <div class="overlay" id="launchOverlay" aria-hidden="true">
+        <div class="popup" role="dialog" aria-modal="true" aria-label="POPJUN — Novo lançamento">
+            <button class="popup-close" type="button" data-close aria-label="Fechar">×</button>
+            <a class="popup-image" data-platform-id="31" href="#" target="_blank" rel="noopener">
+                <img src="banner/JUN (1).jpg" alt="POPJUN — Novo lançamento">
+            </a>
+            <a class="btn btn--primary btn--block" data-platform-id="31" href="#" target="_blank" rel="noopener">PARTICIPE AGORA — POPJUN ›</a>
+        </div>
+    </div>
+
+    <!-- Platform modal -->
+    <div class="overlay" id="platformModal" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="platformModalTitle">
+            <button class="popup-close" type="button" data-close aria-label="Fechar">×</button>
+            <header class="modal-header">
+                <h2 id="platformModalTitle">Selecione sua plataforma</h2>
+                <p><strong id="modalPlatformCount">—</strong> plataformas · <span class="text-good">ONLINE</span></p>
+            </header>
+            <div class="platform-grid" id="platformGrid"></div>
+        </div>
+    </div>
+
+    <!-- RTP alert -->
+    <div class="overlay" id="rtpAlertModal" aria-hidden="true">
+        <div class="popup rtp-alert" role="dialog" aria-modal="true" aria-labelledby="rtpAlertTitle">
+            <button class="popup-close" type="button" data-close aria-label="Fechar">×</button>
+            <p class="rtp-alert-title" id="rtpAlertTitle">⚡ ALERTA RTP DETECTADO</p>
+            <img class="rtp-alert-img" id="rtpAlertGameImg" alt="Jogo com maior RTP">
+            <p class="rtp-alert-rtp">RTP ATUAL <strong id="rtpAlertValue">—</strong></p>
+            <p class="rtp-alert-message">Esta janela de pagamento fecha em</p>
+            <p class="rtp-alert-countdown" id="rtpAlertCountdown">3:00</p>
+            <a class="btn btn--primary btn--block" id="rtpAlertBtn" data-close href="#" target="_blank" rel="noopener">🎰 JOGAR AGORA</a>
+        </div>
+    </div>
+
+    <!-- Winners lightbox -->
+    <div class="overlay overlay--dark" id="tm-lightbox" aria-hidden="true">
+        <button class="popup-close popup-close--fixed" type="button" data-close aria-label="Fechar">×</button>
+        <img class="lightbox-img" id="tm-lightbox-img" alt="Ganhador">
+    </div>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Pop RTP - Best RTP | Jogo RTP",
+        "alternateName": "Pop RTP Sistema RTP",
+        "description": "Pop RTP - O melhor sistema de análise RTP em tempo real para jogos de cassino online. Encontre os melhores jogos RTP e best RTP atualizados a cada 3 minutos.",
+        "url": "https://poprtp.com/",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web Browser",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "2547", "bestRating": "5", "worstRating": "1" },
+        "publisher": { "@type": "Organization", "name": "Pop RTP", "alternateName": "Pop RTP Best RTP", "url": "https://poprtp.com/" },
+        "keywords": "jogo rtp, rtp online, rtp jogos, pop rtp, best rtp, sistema rtp, RTP em tempo real, rtp slots, rtp jogos online",
+        "inLanguage": "pt-BR",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "softwareVersion": "2.0",
+        "featureList": ["Análise RTP em Tempo Real", "Atualização a cada 3 minutos", "Interface responsiva", "Sincronização global", "Múltiplos provedores"],
+        "screenshot": "https://poprtp.com/asset/banner/1%20(1).jpg"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Pop RTP",
+        "alternateName": ["Pop RTP Best RTP", "Pop RTP Jogo RTP"],
+        "url": "https://poprtp.com/",
+        "logo": "https://poprtp.com/asset/favicon/favicon.jpg",
+        "description": "Pop RTP - O melhor sistema de RTP em tempo real para cassino online no Brasil. Best RTP e jogo RTP profissional.",
+        "contactPoint": { "@type": "ContactPoint", "contactType": "Customer Support", "availableLanguage": ["Portuguese"] },
+        "sameAs": ["https://t.me/asdassadher314"]
+    }
+    </script>
+
+    <script src="js/bootstrap.js"></script>
+    <script src="dist/orb.min.js" defer></script>
+</body>
+</html>

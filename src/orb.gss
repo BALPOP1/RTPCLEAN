@@ -1,0 +1,140 @@
+/* Splash intro: one ball that rapidly cycles through the platform logos, with rings and moons.
+   The nine logo balls share one spot; `swap` shows each for one ninth of the cycle,
+   the next one growing over the last as it shrinks away. */
+@scene {
+  group#ball {
+    group#sway {
+      sphere.logo#jun;
+      sphere.logo#miu;
+      sphere.logo#tig;
+      sphere.logo#bul;
+      sphere.logo#cra;
+      sphere.logo#bea;
+      sphere.logo#tam;
+      sphere.logo#nov;
+      sphere.logo#sen;
+    }
+  }
+  group#halo {
+    torus#ring;
+  }
+  group#tilt {
+    torus#ring2;
+  }
+  group#orbit {
+    sphere.moon * 3;
+  }
+}
+
+scene {
+  floor: none;
+  background: #000;
+  camera-distance: 8;
+  camera-angle: 0deg 6deg;
+  dpr: auto;
+  shadows: none;
+  ambient: 0.7;
+  shape-rendering: geometricPrecision;
+  filter: bloom(0.2) saturate(1.15);
+}
+
+/* 9 logos x 0.6s = 5.4s cycle; fast enough to flash several logos during the 3s intro */
+.logo {
+  radius: 1.15;
+  material: matte();
+  scale: 0.01;
+  animation: swap 5.4s ease-in-out infinite;
+}
+
+#jun { color: #f4f7fc; animation-delay: 0s; }
+#jun::face(front) { texture: url("asset/orb/31.png"); }
+#miu { color: #ffd6de; animation-delay: -4.8s; }
+#miu::face(front) { texture: url("asset/orb/30.png"); }
+#tig { color: #ffe8b3; animation-delay: -4.2s; }
+#tig::face(front) { texture: url("asset/orb/23.png"); }
+#bul { color: #d4eaff; animation-delay: -3.6s; }
+#bul::face(front) { texture: url("asset/orb/28.png"); }
+#cra { color: #e0f3c9; animation-delay: -3s; }
+#cra::face(front) { texture: url("asset/orb/26.png"); }
+#bea { color: #eadaff; animation-delay: -2.4s; }
+#bea::face(front) { texture: url("asset/orb/21.png"); }
+#tam { color: #ffe9c2; animation-delay: -1.8s; }
+#tam::face(front) { texture: url("asset/orb/29.png"); }
+#nov { color: #ffdccf; animation-delay: -1.2s; }
+#nov::face(front) { texture: url("asset/orb/24.png"); }
+#sen { color: #d6f3e3; animation-delay: -0.6s; }
+#sen::face(front) { texture: url("asset/orb/27.png"); }
+
+#ball {
+  animation: breathe 0.9s ease-in-out infinite alternate;
+}
+
+#sway {
+  animation: sway 1.5s ease-in-out infinite alternate;
+}
+
+#ring {
+  radius: 1.65;
+  thickness: 0.045;
+  color: rgb(249, 22, 22);
+  material: emissive();
+}
+
+#halo {
+  rotate-x: 72deg;
+  animation: spin-z 1.8s linear infinite;
+}
+
+#ring2 {
+  radius: 1.95;
+  thickness: 0.025;
+  color: #60a5fa;
+  material: emissive();
+}
+
+#tilt {
+  rotate-z: 58deg;
+  animation: spin-x 2.5s linear infinite;
+}
+
+.moon {
+  radius: 0.13;
+  color: #fbbf24;
+  material: emissive();
+  translate: calc(cos(sibling-index() * 120deg) * 1.65) 0 calc(sin(sibling-index() * 120deg) * 1.65);
+}
+
+#orbit {
+  rotate-x: 72deg;
+  animation: spin-z 1.8s linear infinite;
+}
+
+/* One slot is 11.11% of the cycle: swing in, hold, swing out while the next swings in */
+@keyframes swap {
+  0% { scale: 0.01; rotate-y: -90deg; }
+  1.6% { scale: 1.03; rotate-y: 0deg; }
+  2.4% { scale: 1; rotate-y: 0deg; }
+  11.11% { scale: 1; rotate-y: 0deg; }
+  12.7% { scale: 0.01; rotate-y: 90deg; }
+  100% { scale: 0.01; rotate-y: 90deg; }
+}
+
+@keyframes breathe {
+  from { scale: 0.94; translate: 0 -0.08 0; }
+  to { scale: 1.06; translate: 0 0.08 0; }
+}
+
+@keyframes sway {
+  from { rotate-y: -20deg; }
+  to { rotate-y: 20deg; }
+}
+
+@keyframes spin-z {
+  from { rotate-y: 0deg; }
+  to { rotate-y: 360deg; }
+}
+
+@keyframes spin-x {
+  from { rotate-y: 0deg; }
+  to { rotate-y: 360deg; }
+}

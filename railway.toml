@@ -1,0 +1,8 @@
+# Railway deploy — https://docs.railway.com/deploy/config-as-code
+[build]
+builder = "nixpacks"
+buildCommand = "npm run build"
+
+[deploy]
+startCommand = "node server.js"
+restartPolicyType = "on_failure"

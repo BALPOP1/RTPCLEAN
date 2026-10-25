@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    <url>
+        <loc>https://poprtp.com/</loc>
+        <lastmod>2026-10-24</lastmod>
+        <changefreq>hourly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://poprtp.com/asset/banner/1%20(1).jpg</image:loc>
+            <image:title>Pop RTP - Best RTP Sistema de Análise</image:title>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://poprtp.com/jogo-responsavel</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://poprtp.com/article/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <!-- article:build:start -->
+    <url>
+        <loc>https://poprtp.com/article/apostas-online-quando-diversao-vira-vicio/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://poprtp.com/article/metodo-infalivel-apostas-quatro-sistemas/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://poprtp.com/article/regulacao-jogo-aposta-brasil/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://poprtp.com/article/apostas-online-direito-trabalho/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://poprtp.com/article/psicologia-financeira-jogos-apostas/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+    <url>
+        <loc>https://poprtp.com/article/regulamentacao-apostas-online-paises/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.75</priority>
+    </url>
+        <!-- article:build:end -->
+</urlset>

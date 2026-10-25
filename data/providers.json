@@ -1,0 +1,11 @@
+{
+  "providers": {
+    "PG SOFT": { "displayName": "PG Soft", "label": "PG SOFT", "folder": "PG SOFT", "priority": 1 },
+    "Pragmatic Play": { "displayName": "Pragmatic Play", "label": "PRAGMATIC", "folder": "Pragmatic Play", "priority": 1 },
+    "Play N' GO": { "displayName": "Play N' GO", "label": "PLAY N' GO", "folder": "Play N' GO", "priority": 1 },
+    "Playtech": { "displayName": "Playtech", "label": "PLAYTECH", "folder": "Playtech", "priority": 2 },
+    "HACKSAW": { "displayName": "Hacksaw Gaming", "label": "HACKSAW", "folder": "HACKSAW", "priority": 1 },
+    "TADA": { "displayName": "TADAJILI", "label": "TADAJILI", "folder": "TADA", "priority": 2 }
+  },
+  "gameData": {}
+}
