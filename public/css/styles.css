@@ -889,6 +889,33 @@ button {
     transform: scale(1.05);
 }
 
+@media (max-width: 639px) {
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .stat--hot {
+        grid-column: auto;
+    }
+
+    .stat {
+        padding: 12px 14px 11px;
+    }
+
+    .stat-value {
+        font-size: 22px;
+    }
+
+    .stat-value--text {
+        font-size: 15px;
+    }
+
+    .stat-sub {
+        font-size: 11px;
+    }
+}
+
 /* --------------------------------------------------------------------------
    Sections (winners, games)
    -------------------------------------------------------------------------- */

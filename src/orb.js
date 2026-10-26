@@ -11,9 +11,45 @@ var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)');
 var START_DELAY_MS = 2000;
 var INTRO_MS = 3000;
 var EXIT_MS = 400;
+var MOBILE_MAX = 639;
+var SCROLL_DURATION_MS = 2800;
 
 var instances = [];
 var finished = false;
+var mobileScrollScheduled = false;
+
+function isMobileViewport() {
+    return window.matchMedia && window.matchMedia('(max-width: ' + MOBILE_MAX + 'px)').matches;
+}
+
+/** Slow ease scroll to the Jogos section (mobile only, once per page load). */
+function scrollToGamesOnMobile() {
+    if (mobileScrollScheduled || !isMobileViewport()) return;
+    mobileScrollScheduled = true;
+
+    var target = document.querySelector('.section.games');
+    if (!target) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        target.scrollIntoView({ block: 'start' });
+        return;
+    }
+
+    var startY = window.scrollY;
+    var endY = target.getBoundingClientRect().top + startY - 12;
+    var distance = endY - startY;
+    if (Math.abs(distance) < 24) return;
+
+    var t0 = null;
+    function frame(now) {
+        if (t0 == null) t0 = now;
+        var t = Math.min(1, (now - t0) / SCROLL_DURATION_MS);
+        var ease = t * t * (3 - 2 * t);
+        window.scrollTo(0, startY + distance * ease);
+        if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+}
 
 function cleanup() {
     instances.forEach(function (it) {
@@ -33,13 +69,17 @@ function finishIntro() {
     document.querySelectorAll('.gss-orb').forEach(function (wrap) {
         wrap.classList.add('is-done');
     });
-    setTimeout(cleanup, EXIT_MS);
+    setTimeout(function () {
+        cleanup();
+        scrollToGamesOnMobile();
+    }, EXIT_MS);
 }
 
 function start() {
     if (finished || instances.length) return;
     if (REDUCED.matches || softwareRendering()) {
         cleanup();
+        setTimeout(scrollToGamesOnMobile, START_DELAY_MS + INTRO_MS);
         return;
     }
 
