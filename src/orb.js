@@ -1,13 +1,14 @@
 /**
  * 3-second GSS (GPU Style Sheets) loading splash:
- * Renders a single POPJUN logo ball with a gentle floating animation for 3 seconds,
- * then destroys the WebGL scene and removes the DOM elements completely.
+ * Pre-mounts on load, then shows and plays the single POPJUN logo ball 2 seconds after first load
+ * for 3 seconds before destroying the WebGL scene and removing the DOM elements completely.
  */
 import { mount, softwareRendering } from 'gss-lang/runtime';
 import orb from './orb.gss';
 
 var SCENES = { orb: orb };
 var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)');
+var START_DELAY_MS = 2000;
 var INTRO_MS = 3000;
 var EXIT_MS = 400;
 
@@ -49,12 +50,15 @@ function start() {
         var scene = SCENES[wrap.getAttribute('data-scene')];
         if (!scene) return;
         try {
-            instances.push({
-                wrap: wrap,
-                scene: mount(wrap.querySelector('canvas'), scene, { controls: false, adaptDpr: false })
-            });
-            wrap.classList.add('is-ready');
-            setTimeout(finishIntro, INTRO_MS);
+            var view = mount(wrap.querySelector('canvas'), scene, { controls: false, adaptDpr: false });
+            view.pause();
+            instances.push({ wrap: wrap, scene: view });
+            setTimeout(function () {
+                if (finished) return;
+                view.play();
+                wrap.classList.add('is-ready');
+                setTimeout(finishIntro, INTRO_MS);
+            }, START_DELAY_MS);
         } catch (err) {
             console.warn('GSS orb intro unavailable:', err && err.message);
             cleanup();

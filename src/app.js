@@ -13,7 +13,7 @@
     var CYCLE_MS = 3 * 60 * 1000;
     var INITIAL_GAMES = 24;
     var GAMES_PER_PAGE = 24;
-    var SORTE_ENTRY_DELAY_MS = 3800;
+    var SORTE_ENTRY_DELAY_MS = 5600;
 
     var cdnBase = '';
     var allGames = [];
