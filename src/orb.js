@@ -1,7 +1,7 @@
 /**
- * Decorative GSS (GPU Style Sheets) logo ball:
- * plays a 3-second playful center-screen intro on initial load (both desktop and mobile),
- * then destroys the WebGL scene and removes the DOM node so there is zero ongoing GPU/CPU cost.
+ * 3-second GSS (GPU Style Sheets) loading splash:
+ * Renders a single POPJUN logo ball with a gentle floating animation for 3 seconds,
+ * then destroys the WebGL scene and removes the DOM elements completely.
  */
 import { mount, softwareRendering } from 'gss-lang/runtime';
 import orb from './orb.gss';
@@ -9,7 +9,7 @@ import orb from './orb.gss';
 var SCENES = { orb: orb };
 var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)');
 var INTRO_MS = 3000;
-var EXIT_MS = 450;
+var EXIT_MS = 400;
 
 var instances = [];
 var finished = false;
@@ -19,9 +19,6 @@ function cleanup() {
         try {
             it.scene.destroy();
         } catch (e) {}
-        if (it.wrap && it.wrap.parentNode) {
-            it.wrap.parentNode.removeChild(it.wrap);
-        }
     });
     instances = [];
     document.querySelectorAll('.gss-orb, .gss-key').forEach(function (el) {
@@ -33,7 +30,6 @@ function finishIntro() {
     if (finished) return;
     finished = true;
     document.querySelectorAll('.gss-orb').forEach(function (wrap) {
-        wrap.classList.remove('is-intro');
         wrap.classList.add('is-done');
     });
     setTimeout(cleanup, EXIT_MS);
