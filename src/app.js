@@ -493,11 +493,22 @@
     var platformModal = null;
 
     function openPlatformModal() {
-        if (platformModal) platformModal.show();
+        if (!platformModal) return;
+        generatePlatformCards();
+        platformModal.show();
     }
 
     function platformLogo(id) {
         return id >= 18 ? 'asset/' + id + '.png' : cdnBase + '/asset/' + id + '.png';
+    }
+
+    function shuffleArray(arr) {
+        var out = arr.slice();
+        for (var i = out.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = out[i]; out[i] = out[j]; out[j] = tmp;
+        }
+        return out;
     }
 
     function generatePlatformCards() {
@@ -506,7 +517,7 @@
         grid.innerHTML = '';
 
         var list = PLATFORMS.length > 1
-            ? [PLATFORMS[0]].concat(seededShuffle(PLATFORMS.slice(1), SESSION_GRID_SEED))
+            ? [PLATFORMS[0]].concat(shuffleArray(PLATFORMS.slice(1)))
             : PLATFORMS;
 
         list.forEach(function (platform, index) {
