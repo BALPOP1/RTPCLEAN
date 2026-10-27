@@ -534,7 +534,8 @@ button {
     box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.55);
 }
 
-.timer-card.is-expiring .timer-display {
+.timer-card.is-expiring .timer-display,
+.timer-card.is-expiring .ts-timer-display {
     color: #fca5a5;
     animation: expiring 1s ease-in-out infinite;
 }
@@ -543,72 +544,29 @@ button {
     50% { transform: scale(1.04); }
 }
 
-/* Timer card slides — wrappers are transparent above 639px; slide 2 is mobile only */
-.timer-card-track,
-.timer-slide--main {
+/* Mobile 4-tile grid inside .timer-card — hidden above 639px */
+.timer-desktop {
     display: contents;
 }
 
-.timer-slide--stats,
-.timer-card-dots {
+.ts-grid {
     display: none;
 }
 
 @media (max-width: 639px) {
+    .timer-desktop {
+        display: none;
+    }
+
     .timer-card {
-        position: relative;
-        display: block;
-        padding: 0;
-        overflow: hidden;
+        padding: 12px;
     }
 
-    .timer-card-track {
-        display: flex;
-        transition: transform 0.45s ease;
-        touch-action: pan-y;
+    .ts-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
     }
-
-    .timer-slide {
-        flex: 0 0 100%;
-        min-width: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
-        padding: 14px 16px 16px;
-    }
-
-    .timer-card-dots {
-        position: absolute;
-        top: 15px;
-        right: 14px;
-        display: flex;
-        gap: 5px;
-    }
-
-    .timer-card-dot {
-        width: 6px;
-        height: 6px;
-        padding: 0;
-        border: none;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.35);
-        cursor: pointer;
-        transition: width 0.3s ease, background-color 0.3s ease;
-    }
-
-    .timer-card-dot.is-active {
-        width: 16px;
-        background: var(--orange);
-    }
-}
-
-.ts-grid {
-    flex: 1 1 auto;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: auto 1fr;
-    gap: 8px;
 }
 
 .ts-item {
@@ -618,9 +576,9 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3px;
+    gap: 4px;
     min-width: 0;
-    padding: 10px 8px 8px;
+    padding: 12px 8px 10px;
     overflow: hidden;
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.06);
@@ -638,25 +596,36 @@ button {
     background: var(--accent);
 }
 
+.ts-item--timer {
+    --accent: #38bdf8;
+}
+
 .ts-item--hot {
     --accent: var(--orange);
-    grid-column: 1 / -1;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 10px 14px 8px;
-    text-align: left;
 }
 
 .ts-item--money {
     --accent: var(--good);
 }
 
-.ts-text {
+.ts-meter {
     display: flex;
-    flex-direction: column;
-    gap: 2px;
-    min-width: 0;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    padding: 0 6px;
+}
+
+.ts-meter .progress {
+    flex: 1 1 auto;
+}
+
+.ts-pct {
+    color: var(--orange);
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
 }
 
 .ts-head {
@@ -664,10 +633,7 @@ button {
     align-items: center;
     justify-content: center;
     gap: 5px;
-}
-
-.ts-item--hot .ts-head {
-    justify-content: flex-start;
+    max-width: 100%;
 }
 
 .ts-dot {
@@ -682,9 +648,11 @@ button {
     color: var(--on-navy-soft);
     font-size: 9px;
     font-weight: 800;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
+    overflow: hidden;
     white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .ts-value {
