@@ -505,24 +505,23 @@
         if (!grid) return;
         grid.innerHTML = '';
 
-        PLATFORMS.forEach(function (platform, index) {
+        var list = PLATFORMS.length > 1
+            ? [PLATFORMS[0]].concat(seededShuffle(PLATFORMS.slice(1), SESSION_GRID_SEED))
+            : PLATFORMS;
+
+        list.forEach(function (platform, index) {
             var live = isLiveUrl(platform.url);
-            var soon = platform.status === 'soon';
             var card = document.createElement('a');
-            card.className = 'platform-card' + (index === 0 ? ' platform-card--featured' : '') + (live ? '' : ' is-disabled');
+            card.className = 'platform-card' + (index === 0 ? ' platform-card--featured' : '');
             card.href = live ? platform.url : '#';
             if (live) {
                 card.target = '_blank';
                 card.rel = 'noopener';
             }
 
-            var status = '';
-            if (soon) status = '<span class="platform-status platform-status--soon">EM BREVE</span>';
-            else if (live) status = '<span class="platform-status">ONLINE</span>';
-
             card.innerHTML =
                 '<img src="' + platformLogo(platform.id) + '" alt="' + (platform.name || 'Plataforma ' + platform.id) + '" loading="lazy">' +
-                status;
+                '<span class="platform-status">ONLINE</span>';
             grid.appendChild(card);
         });
 
