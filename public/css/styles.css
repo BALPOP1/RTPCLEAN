@@ -291,13 +291,17 @@ button {
 .header-inner {
     display: grid;
     grid-template-columns: 1fr auto;
-    grid-template-areas:
-        "brand meta"
-        "title title";
+    grid-template-areas: "brand meta";
     align-items: center;
     gap: 10px 12px;
     padding-top: 12px;
     padding-bottom: 12px;
+}
+
+.header-inner:has(.header-title) {
+    grid-template-areas:
+        "brand meta"
+        "title title";
 }
 
 .brand {
