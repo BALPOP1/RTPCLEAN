@@ -543,6 +543,205 @@ button {
     50% { transform: scale(1.04); }
 }
 
+/* Timer card slides — wrappers are transparent above 639px; slide 2 is mobile only */
+.timer-card-track,
+.timer-slide--main {
+    display: contents;
+}
+
+.timer-slide--stats,
+.timer-card-dots {
+    display: none;
+}
+
+@media (max-width: 639px) {
+    .timer-card {
+        position: relative;
+        display: block;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .timer-card-track {
+        display: flex;
+        transition: transform 0.45s ease;
+        touch-action: pan-y;
+    }
+
+    .timer-slide {
+        flex: 0 0 100%;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+        padding: 14px 16px 16px;
+    }
+
+    .timer-card-dots {
+        position: absolute;
+        top: 15px;
+        right: 14px;
+        display: flex;
+        gap: 5px;
+    }
+
+    .timer-card-dot {
+        width: 6px;
+        height: 6px;
+        padding: 0;
+        border: none;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.35);
+        cursor: pointer;
+        transition: width 0.3s ease, background-color 0.3s ease;
+    }
+
+    .timer-card-dot.is-active {
+        width: 16px;
+        background: var(--orange);
+    }
+}
+
+.ts-grid {
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto 1fr;
+    gap: 8px;
+}
+
+.ts-item {
+    --accent: var(--blue);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-width: 0;
+    padding: 10px 8px 8px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.ts-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent);
+}
+
+.ts-item--hot {
+    --accent: var(--orange);
+    grid-column: 1 / -1;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 14px 8px;
+    text-align: left;
+}
+
+.ts-item--money {
+    --accent: var(--good);
+}
+
+.ts-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.ts-head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.ts-item--hot .ts-head {
+    justify-content: flex-start;
+}
+
+.ts-dot {
+    width: 6px;
+    height: 6px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.ts-label {
+    color: var(--on-navy-soft);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.ts-value {
+    max-width: 100%;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.15;
+    font-variant-numeric: tabular-nums;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ts-value--text {
+    font-size: 14px;
+}
+
+.ts-value.ganhos-value {
+    color: #4ade80;
+}
+
+.ts-sub {
+    color: #94a3b8;
+    font-size: 10px;
+    line-height: 1.3;
+}
+
+.ts-sub:empty {
+    display: none;
+}
+
+.ts-sub strong {
+    font-weight: 800;
+}
+
+.ts-sub .sinal-rtp {
+    color: #4ade80;
+}
+
+.ts-sub .sinal-mult {
+    color: var(--orange);
+}
+
+.ts-item--hot.is-active {
+    background: rgba(249, 115, 22, 0.18);
+}
+
+.ts-item--hot.is-active .ts-value,
+.ts-item--hot.is-active .ts-label {
+    color: var(--orange);
+}
+
+.ts-item--hot.is-active .ts-dot {
+    animation: hot-pulse 1.6s ease-out infinite;
+}
+
 /* Main carousel */
 .carousel {
     position: relative;
@@ -891,8 +1090,7 @@ button {
 
 @media (max-width: 639px) {
     .stats {
-        grid-template-columns: 1fr;
-        gap: 10px;
+        display: none;
     }
 
     .stat--hot {

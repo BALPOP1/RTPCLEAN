@@ -482,6 +482,50 @@
         go(0);
     }
 
+    /** Mobile only: timer-card slide 1 (countdown) / slide 2 (info cards). */
+    function setupTimerCardCarousel() {
+        var track = $('timerCardTrack');
+        if (!track || !window.matchMedia) return;
+        var dots = document.querySelectorAll('.timer-card-dot');
+        var mobile = window.matchMedia('(max-width: 639px)');
+        var total = 2;
+        var current = 0;
+        var timer = null;
+
+        function go(index) {
+            current = (index + total) % total;
+            track.style.transform = current ? 'translateX(-' + current * 100 + '%)' : '';
+            dots.forEach(function (d, i) { d.classList.toggle('is-active', i === current); });
+        }
+
+        function restart() {
+            clearInterval(timer);
+            timer = mobile.matches ? setInterval(function () { go(current + 1); }, 4500) : null;
+        }
+
+        function nav(index) { go(index); restart(); }
+
+        dots.forEach(function (d, i) { d.addEventListener('click', function () { nav(i); }); });
+
+        var touchX = null;
+        track.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+        track.addEventListener('touchend', function (e) {
+            if (touchX === null || !mobile.matches) return;
+            var diff = touchX - e.changedTouches[0].clientX;
+            touchX = null;
+            if (Math.abs(diff) > 40) nav(current + (diff > 0 ? 1 : -1));
+        });
+
+        function onViewportChange() {
+            go(0);
+            restart();
+        }
+        if (mobile.addEventListener) mobile.addEventListener('change', onViewportChange);
+        else if (mobile.addListener) mobile.addListener(onViewportChange);
+
+        onViewportChange();
+    }
+
     // ============================================
     // PLATFORM MODAL
     // ============================================
@@ -569,6 +613,7 @@
         applyLinks();
         setupCarousel();
         setupSideBannerCarousel();
+        setupTimerCardCarousel();
         setupPlatformModal();
         setupEntryPopups();
         setupLoadMore();

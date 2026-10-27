@@ -14,6 +14,18 @@
 
     function $(id) { return document.getElementById(id); }
 
+    /** The element with `id` (desktop info card) plus every `[attr]` copy (mobile timer-card slide). */
+    function both(id, attr) {
+        var list = Array.prototype.slice.call(document.querySelectorAll('[' + attr + ']'));
+        var el = $(id);
+        if (el) list.unshift(el);
+        return list;
+    }
+
+    function setAll(list, text) {
+        list.forEach(function (el) { el.textContent = text; });
+    }
+
     function getSPTime() {
         return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
     }
@@ -66,24 +78,24 @@
     }
 
     function initHoraQuente() {
-        var strip = $('horaQuenteStrip');
-        if (!strip || !HOT_HOURS.length) return;
-        var labelEl = $('horaQuenteLabel');
-        var timeEl = $('horaQuenteTime');
-        var countdownEl = $('horaQuenteCountdown');
+        var strips = both('horaQuenteStrip', 'data-stat="hot"');
+        if (!strips.length || !HOT_HOURS.length) return;
+        var labelEls = both('horaQuenteLabel', 'data-hora-quente-label');
+        var timeEls = both('horaQuenteTime', 'data-hora-quente-time');
+        var countdownEls = both('horaQuenteCountdown', 'data-hora-quente-countdown');
 
         function tick() {
             var active = isHotHourActive();
-            strip.classList.toggle('is-active', active);
+            strips.forEach(function (el) { el.classList.toggle('is-active', active); });
             if (active) {
-                labelEl.textContent = 'Horário quente ativo';
-                timeEl.textContent = 'AGORA';
-                countdownEl.textContent = '';
+                setAll(labelEls, 'Horário quente ativo');
+                setAll(timeEls, 'AGORA');
+                setAll(countdownEls, '');
             } else {
                 var next = getNextHotHour();
-                labelEl.textContent = 'Próximo horário quente';
-                timeEl.textContent = next.label;
-                countdownEl.textContent = 'em ' + formatCountdown(Math.floor(next.diffSec));
+                setAll(labelEls, 'Próximo horário quente');
+                setAll(timeEls, next.label);
+                setAll(countdownEls, 'em ' + formatCountdown(Math.floor(next.diffSec)));
             }
         }
 
@@ -96,16 +108,16 @@
     // ============================================
 
     function initSinalDoDia() {
-        if (!$('sinalDoDiaPanel') || !SINAL_GAMES.length) return;
+        if (!SINAL_GAMES.length) return;
         var seed = getTodaySeed();
         var game = SINAL_GAMES[Math.floor(seededRand(seed) * SINAL_GAMES.length)];
         var rtpMin = 85 + Math.floor(seededRand(seed + 1) * 10);
         var rtpMax = rtpMin + 2 + Math.floor(seededRand(seed + 2) * 4);
         var mult = SINAL_MULTS[Math.floor(seededRand(seed + 3) * SINAL_MULTS.length)];
 
-        $('sinalGameName').textContent = game;
-        $('sinalRTP').textContent = rtpMin + '–' + rtpMax + '%';
-        $('sinalMult').textContent = mult ? 'até ' + mult : '';
+        setAll(both('sinalGameName', 'data-sinal-game'), game);
+        setAll(both('sinalRTP', 'data-sinal-rtp'), rtpMin + '–' + rtpMax + '%');
+        setAll(both('sinalMult', 'data-sinal-mult'), mult ? 'até ' + mult : '');
     }
 
     // ============================================
@@ -140,7 +152,7 @@
     }
 
     function startGanhosDoDia() {
-        var els = ['ganhosDoDiaValue', 'ganhosDoDiaValueDesktop'].map($).filter(Boolean);
+        var els = both('ganhosDoDiaValue', 'data-ganhos-value').concat([$('ganhosDoDiaValueDesktop')].filter(Boolean));
         if (!els.length) return;
 
         var lastDateSeed = -1;

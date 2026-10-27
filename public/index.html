@@ -82,19 +82,51 @@
         <!-- Hero: timer | carousel | platform promo (desktop); carousel then timer (mobile) -->
         <section class="hero">
             <aside class="card timer-card" aria-label="Próxima atualização do RTP">
-                <p class="eyebrow">Próxima atualização</p>
-                <div class="timer-display">
-                    <span id="timerMinutes">--</span><span class="timer-sep">:</span><span id="timerSeconds">--</span>
-                </div>
-                <div class="timer-meter">
-                    <div class="progress"><div class="progress-fill" id="timerProgressBar"></div></div>
-                    <div class="timer-progress-text">
-                        <span>INÍCIO</span>
-                        <span id="progressPercent">0%</span>
-                        <span>PRÓXIMO</span>
+                <div class="timer-card-track" id="timerCardTrack">
+                    <div class="timer-slide timer-slide--main">
+                        <p class="eyebrow">Próxima atualização</p>
+                        <div class="timer-display">
+                            <span id="timerMinutes">--</span><span class="timer-sep">:</span><span id="timerSeconds">--</span>
+                        </div>
+                        <div class="timer-meter">
+                            <div class="progress"><div class="progress-fill" id="timerProgressBar"></div></div>
+                            <div class="timer-progress-text">
+                                <span>INÍCIO</span>
+                                <span id="progressPercent">0%</span>
+                                <span>PRÓXIMO</span>
+                            </div>
+                        </div>
+                        <button class="btn btn--primary btn--block" type="button" data-open-platforms>VER PLATAFORMAS</button>
+                    </div>
+
+                    <!-- Mobile only: the three info cards as slide 2 -->
+                    <div class="timer-slide timer-slide--stats" aria-label="Resumo do dia">
+                        <p class="eyebrow">Resumo do dia</p>
+                        <div class="ts-grid">
+                            <div class="ts-item ts-item--hot" data-stat="hot">
+                                <div class="ts-text">
+                                    <p class="ts-head"><span class="ts-dot" aria-hidden="true"></span><span class="ts-label" data-hora-quente-label>Próximo horário quente</span></p>
+                                    <span class="ts-sub" data-hora-quente-countdown></span>
+                                </div>
+                                <strong class="ts-value" data-hora-quente-time>--:--</strong>
+                            </div>
+                            <div class="ts-item ts-item--signal" data-stat="signal">
+                                <p class="ts-head"><span class="ts-dot" aria-hidden="true"></span><span class="ts-label">Sinal do dia</span></p>
+                                <strong class="ts-value ts-value--text" data-sinal-game>—</strong>
+                                <span class="ts-sub">RTP <strong class="sinal-rtp" data-sinal-rtp>—</strong> · <strong class="sinal-mult" data-sinal-mult>—</strong></span>
+                            </div>
+                            <div class="ts-item ts-item--money" data-stat="money">
+                                <p class="ts-head"><span class="ts-dot" aria-hidden="true"></span><span class="ts-label">Ganhos hoje</span></p>
+                                <strong class="ts-value ganhos-value" data-ganhos-value>R$ —</strong>
+                                <span class="ts-sub">pelos usuários</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <button class="btn btn--primary btn--block" type="button" data-open-platforms>VER PLATAFORMAS</button>
+                <div class="timer-card-dots" id="timerCardDots">
+                    <button class="timer-card-dot is-active" type="button" data-slide="0" aria-label="Cronômetro"></button>
+                    <button class="timer-card-dot" type="button" data-slide="1" aria-label="Resumo do dia"></button>
+                </div>
             </aside>
 
             <div class="carousel">
